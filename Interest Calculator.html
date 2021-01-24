@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Experiment No.4</title>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            function simple_int()
+            {
+              var p = parseFloat(document.forms["myform"]["pr"].value);
+              var r = parseFloat(document.forms["myform"]["rate"].value);
+              var t = parseFloat(document.forms["myform"]["year"].value);
+              var si = (p*r*t) / 100;
+              var a = (si + p).toFixed(3) ;
+              result=document.getElementById("result");
+              result.innerHTML = "Simple Interest = " + si +"   "+"Total amount =" + a ;
+
+            }
+            function compound_int()
+            {
+              var p = parseFloat(document.forms["myform"]["pr"].value);
+              var r = parseFloat(document.forms["myform"]["rate"].value);
+              var t = parseFloat(document.forms["myform"]["year"].value);
+              var n = parseFloat(document.forms["myform"]["comp"].value);
+                  r = r/100 ;
+              var a = (p*( Math.pow( (1 + r/n ) ,  (n*t)       ) )).toFixed(3);
+              var ci = (a - p).toFixed(3) ;
+              result=document.getElementById("result");
+              result.innerHTML="The compound interest is: " + ci +"   " +"Total amount =" + a;
+            }
+        </script>
+    </head>
+    
+    <body style="background-color:#5F9EA0;">
+      
+      <h1 style="text-align: center;">Interest Calculator</h1>
+      <hr>
+      <hr>
+      
+      <h2>Simple Interest:Total amount(A) = P +((P * R * T)/100)</h2>
+      <br>
+      <h2>Compound Interest:Total amount(A)= P *(1 + (r/n) )^(nT) , here r = R/100</h2><br><hr>
+        <form action=" " method="post" name="myform" onsubmit="return false">
+            
+              <label for="pr">Principle Amount(P):</label>
+              <input type="text" id="pr" name="pr" placeholder="NO rupee sign and comma"><br><br> 
+              <label for="rate">Annual Interest Rate(R):</label>
+              <input type="text" id="rate" name="rate" placeholder="E.g:12% so enter 12"><br><br>
+              <label for="year">Time Period(T):</label>
+              <input type="text" id="year" name="year" placeholder="E.g:2 (must be in  years)"><br><br> 
+              <label for="comp">Times Compounded per Year(n):</label>
+              <input type="text" id="comp" name="comp" placeholder="E.g:4(compounded quarterly)"><br><br> 
+              <p><input type="submit" value="Simple Interest" onclick="simple_int()">&nbsp;&nbsp;
+                 <input type="submit" value="Compound Interest" onclick="compound_int()">
+              </p>
+                <br>
+                <br>
+              <p id="result"></p>
+
+        
+            </form>
+        
+    
+    </body>
+</html>
